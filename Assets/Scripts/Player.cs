@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
     public DodgerAttributes dodAtt;
 
+    [SerializeField] GameObject shield;
+
     [SerializeField] InputSystem inputSys;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -56,7 +58,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") && !shield.activeSelf)
         {
             dodAtt.TakeDamage(1);
             Destroy(collision.gameObject);

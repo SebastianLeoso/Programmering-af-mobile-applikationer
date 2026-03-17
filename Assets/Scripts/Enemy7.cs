@@ -23,6 +23,13 @@ public abstract class BaseEnemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Shield"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
 
 public class Enemy7 : MonoBehaviour

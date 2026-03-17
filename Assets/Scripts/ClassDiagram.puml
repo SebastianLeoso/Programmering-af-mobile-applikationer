@@ -1,0 +1,51 @@
+﻿@startuml
+class DodgerAttributes {
+    + Health : int
+    + maxHealth : int
+    + score : int
+    + ResetHealth() : void
+    + TakeDamage(damage : int) : void
+    + UpdateScore(scoreChange : int) : void
+}
+class BaseEnemy <<abstract>> {
+    + rb : Rigidbody2D
+}
+class Enemy7 {
+    + rb : Rigidbody2D
+}
+class FastEnemy {
+}
+class GameManager {
+    + enemyPrefab : GameObject[]
+    + scoreText : TextMeshProUGUI
+    + tapToStart : GameObject
+    + SpawnEnemy() : void
+}
+class InputSystem {
+    + IsPressing(Vector2 : out) : bool
+}
+class Item {
+    + itemName : string
+    + price : int
+    + SellItem(rarity : int) : int
+}
+class ItemSHop {
+}
+class Player {
+    + dodAtt : DodgerAttributes
+    + Start() : void
+    - OnTriggerEnter2D(collision : Collider2D) : void
+}
+class SlowEnemy {
+}
+MonoBehaviour <|-- BaseEnemy
+MonoBehaviour <|-- Enemy7
+BaseEnemy <|-- FastEnemy
+MonoBehaviour <|-- GameManager
+MonoBehaviour <|-- InputSystem
+ScriptableObject <|-- Item
+MonoBehaviour <|-- ItemSHop
+MonoBehaviour <|-- Player
+BaseEnemy <|-- SlowEnemy
+Player --> DodgerAttributes : field
+@enduml
