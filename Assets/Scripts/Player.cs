@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 4;
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
     public DodgerAttributes dodAtt;
 
     [SerializeField] GameObject shield;
@@ -16,10 +16,11 @@ public class Player : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        dodAtt = new DodgerAttributes(5,5,0);
     }
     public void Start()
     {
-        dodAtt = new DodgerAttributes(5,5,0);
+        
     }
 
     // Update is called once per frame
